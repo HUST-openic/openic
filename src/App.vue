@@ -1,17 +1,11 @@
 <template>
   <v-app id="openic">
-    <v-system-bar app>
-      <v-spacer></v-spacer>
-
-      <v-icon>mdi-square</v-icon>
-
-      <v-icon>mdi-circle</v-icon>
-
-      <v-icon>mdi-triangle</v-icon>
-    </v-system-bar>
+    <!-- <v-system-bar app top dark window elevation="5">
+      system bar
+    </v-system-bar> -->
 
     <v-app-bar app>
-      v-app-bar
+        app bar
     </v-app-bar>
 
     <v-bottom-navigation app elevation="3">
