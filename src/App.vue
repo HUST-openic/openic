@@ -22,6 +22,7 @@
 
     <v-main>
       <HelloWorld/>
+      <Terminal/>
     </v-main>
 
   </v-app>
@@ -29,13 +30,15 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import Terminal from './components/Terminal.vue'
 
 export default {
   name: 'App',
 
   components: {
     HelloWorld,
-  },
+    Terminal
+},
 
   data: () => ({
     //
