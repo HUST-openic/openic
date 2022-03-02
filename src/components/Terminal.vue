@@ -112,6 +112,7 @@ onMounted(() => {
     else if (printable) {
       // Write for display.
       term.write(e.key);
+      
       // Add to lineBuffer.
       lineBuffer = lineBuffer + e.key;
       cursorPos += 1;
