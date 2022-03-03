@@ -1,9 +1,7 @@
 <template>
-  <v-container>
-    <div>
-      <div id="terminal"></div>
-    </div>
-  </v-container>
+  <div>
+    <div id="terminal"></div>
+  </div>
 </template>
 
 
@@ -14,6 +12,9 @@ import { onMounted } from "@vue/runtime-core";
 import { Terminal } from "xterm";
 import { FitAddon } from "xterm-addon-fit";
 import "xterm/css/xterm.css";
+
+// Tauri API.
+import { emit, listen } from '@tauri-apps/api/event'; 
 
 // Initiate terminal frontend once the dom is mounted.
 onMounted(() => {
@@ -36,7 +37,7 @@ onMounted(() => {
   fitAddon.fit();
 
   let allBuffer = []; // Store lineBuffer history.
-  let currentBufferIdx = 0; // The current buffer index.
+  let currentBufferIdx = 0; // The current buffer index in allBuffer.
   let lineBuffer = ''; // Buffer for each line command.
   let cursorPos = 0; // Current position for the line buffer.
   
@@ -62,7 +63,12 @@ onMounted(() => {
       allBuffer.push(lineBuffer);
       currentBufferIdx += 1;
 
-      // Clear current line buffer.
+      // Trigger tauri event.
+      emit('terminal-enter', {
+        command: lineBuffer,
+      })
+
+      // Clear current line buffer for input again.
       lineBuffer = '';
 
       console.log(allBuffer, currentBufferIdx, lineBuffer); // Good
