@@ -6,10 +6,6 @@
 use serde::Serialize;
 use tauri::Manager;
 
-#[derive(Clone, Serialize)]
-struct TerminalPayload {
-  command: String,
-}
 
 #[derive(Clone, Serialize)]
 struct CommandOutput {
@@ -22,7 +18,10 @@ fn main() {
       // Listen to xtermjs terminal output, executed command and emit shell output to xtermjs.
       app.listen_global("terminal-enter", |event| {
         //TODO: Trim payload and get String.
-        println!("Terminal enteterd from xtermjs: {:?}", event.payload()); // Listen success.
+        // Serialize data not using serde because there is no documentation.
+        let received: Vec<&str> = event.payload().unwrap().split(":").collect();
+        let command_received = String::from(received[1]).replace("\"", "").replace("}", "");
+        println!("Terminal enteterd from xtermjs: {}", command_received); // Listen success, format success.
       });
       app.emit_all("command-executed", CommandOutput { output: "Good xtermjs and tauri working together".into()}).unwrap();
 
