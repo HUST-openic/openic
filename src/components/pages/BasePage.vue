@@ -13,6 +13,7 @@
     </v-navigation-drawer>
 
     <v-main>
+      <p>{{ setupPiniaMessage }}</p>
       <HelloWorld/>
       <Terminal/>
     </v-main>
@@ -22,4 +23,9 @@
 <script setup>
 import HelloWorld from '../HelloWorld.vue';
 import Terminal from '../Terminal.vue';
+import { useStore } from '../../store/setup';
+import { storeToRefs } from 'pinia';
+
+const { setupPiniaMessage } = useStore()
+
 </script>
