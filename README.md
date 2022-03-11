@@ -4,7 +4,7 @@ For next generation of EDA design.
 
 Current by:
 
-- tauri (rc).
+- tauri (rc.4).
 - Vite2 + Vue3 (Composition API) + Vuetify3 (Alpha).
 
 Added:
