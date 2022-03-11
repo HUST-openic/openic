@@ -4,10 +4,6 @@
       app bar
     </v-app-bar>
 
-    <v-bottom-navigation elevation="3">
-      bottom navigation
-    </v-bottom-navigation>
-
     <v-navigation-drawer>
       v-navigation-drawer
     </v-navigation-drawer>
